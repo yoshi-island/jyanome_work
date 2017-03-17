@@ -170,6 +170,10 @@ def list_up(area_list):
         hotel_list = []
 #        for location in area_list:
         hotels = rakuten_search_hotels.get_hotels(app_id, area_list)
+        if hotels == "error":
+          print("この地名では検索不可、、、")
+          exit()
+
         for hotel in hotels:
             hotel_ave = hotel['hotel'][0]['hotelBasicInfo']['reviewAverage']
             if hotel_ave > 4.5:
@@ -186,7 +190,7 @@ def list_up(area_list):
                 hotel_list.append(hotel_name)
 
         if len(hotel_list) == 0:
-            print("ごめんね、該当なし、、、")
+            print("該当するホテルなし、、、")
             print("=====================")
 
 

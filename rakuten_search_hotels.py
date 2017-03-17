@@ -11,7 +11,8 @@ def get_hotels(app_id, code_list):
     query_base = \
     "https://app.rakuten.co.jp/services/api/Travel/SimpleHotelSearch/20131024?format=json&applicationId={app_id}".format(app_id=app_id)
 
-    #print(code_list)
+    if code_list[0] == "":
+      return "error"
 
     q_largeclasscode = "largeClassCode=%s" % code_list[0]
     q_middleclasscode = "middleClassCode=%s" % code_list[1]

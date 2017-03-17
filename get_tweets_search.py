@@ -15,7 +15,7 @@ def get_tweets():
     print("解析したいtwitterアカウントを入れてね[@hogehoge]")
     user = sys.stdin.readline().rstrip()
 
-    n = 5 #多い順にいくつ地名を取るか
+    n = 10 #多い順にいくつ地名を取るか
     tweet_list = tweet_search(user, oath_key_dict)
     text = ""
     for dic in tweet_list:
