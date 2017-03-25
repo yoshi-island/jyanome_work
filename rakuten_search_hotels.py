@@ -22,11 +22,11 @@ def get_hotels(app_id, code_list):
     q_smallclasscode = "smallClassCode=%s" % code_list[2]
     query_str = "%s&%s" % (query_base, q_smallclasscode)
 
+    # detail class codeがあれば追記してクエリを投げる
     _dict = None
     if len(code_list) > 3:
         q_detailclasscode = "detailClassCode=%s" % code_list[3]
         query_detail = "%s&%s" % (query_str, q_detailclasscode)
-        # print(query_detail)
         res = requests.get(query_detail)
         _dict = json.loads(res.content.decode('utf-8'))
     else:
@@ -34,7 +34,6 @@ def get_hotels(app_id, code_list):
         res = requests.get(query_str)
         _dict = json.loads(res.content.decode('utf-8'))
 
-    #print(_dict)
 
     hotels_list = _dict['hotels']
     for hotelinfodic in hotels_list:
