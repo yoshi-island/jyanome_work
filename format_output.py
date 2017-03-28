@@ -157,15 +157,23 @@ def list_up(area_list):
         print("+++++++++++++++++++++++++++++++++++++++")
         print("=====================")
 
-
-        #print(area_list)
-        # [(u'japan', u'kanagawa', u'shonan')]を普通のリスト['japan', 'kanagawa', 'shonan']に整形
+        # [('japan', 'kumamoto', 'kumamoto'), ('japan', 'kumamoto', 'kikuchi'), ('japan', 'kumamoto', 'aso'), ('japan', 'kumamoto', 'yatsushiro'), ('japan', 'kumamoto', 'kuma'), ('japan', 'kumamoto', 'amakusa'), ('japan', 'kumamoto', 'kurokawa')]みたいになっているが、リストになっていないので、リスト化する。
         area_list = area_list[2:-2]
-        area_list = area_list.replace("u", "")
         area_list = area_list.replace("'", "")
         area_list = area_list.replace(" ", "")
-        area_list = area_list.split(",")
-        #print(area_list)
+        area_list = area_list.split("),(")
+        area_list_tmp = []
+        for l in area_list:
+          area_list_tmp.append(tuple(l.split(",")))
+        area_list = []
+        area_list = area_list_tmp
+
+        # 複数ヒットした場合は、一旦一つ目を検索するようにする。
+        # [('japan', 'kanagawa', 'shonan')]を普通のリスト['japan', 'kanagawa', 'shonan']に整形
+        area_list_tmp = []
+        area_list_tmp = list(area_list[0])
+        area_list = []
+        area_list = area_list_tmp
 
         hotel_list = []
 #        for location in area_list:
