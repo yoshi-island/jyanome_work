@@ -28,7 +28,7 @@ def greeting():
         print("%i: %s" % (c, place_list[c-1][0]))
         c = c + 1
 
-    print("どれにする？[1/2/3/4/5]")
+    print("どれにする？[1-10]")
     keyword = int(sys.stdin.readline())-1
     word = place_list[keyword][0]
     print("キーワードは「%s」" % word)
